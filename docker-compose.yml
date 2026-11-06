@@ -1,0 +1,11 @@
+services:
+  contenedor-seguro:
+    build: .
+    image: servicios-seguros:latest
+    container_name: servidor_seguro
+    ports:
+      - "8082:80"                 # HTTP Seguro (Apache 2.4.58+ endurecido y sanitizado)
+      - "2122:21"                 # FTP Seguro  (vsftpd 3.0.5+ sin anonimo y con chroot)
+      - "21106-21110:21106-21110" # Puertos pasivos FTP
+      - "2139:139"                # NetBIOS Seguro
+      - "2445:445"                # SMB Seguro  (Samba 4.19+ solo SMBv3 y autenticado)
